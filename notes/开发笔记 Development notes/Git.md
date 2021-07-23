@@ -43,5 +43,19 @@ git commit -m "remove" 移除文件(从Git中删除)
 git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)
 git diff --cached 或 $ git diff --staged 查看尚未提交的更新
 git reset --soft HEAD{^|~1|~n} 撤回上次commit或者撤回几次
+
+1.git如何同步本地分支与远程origin的分支
+
+分析：远端有新增分支，git fetch可以同步到新的分支到本地，但是远端有删除分支，直接"git fetch"是不能将远程已经不存在的branch等在本地删除的
+
+解决方法：
+git fetch --prune #这样就可以实现在本地删除远程已经不存在的分支
+
+2.Git回退代码到指定版本
+
+1. 查看所有的历史版本，获取你git的某个历史版本的id， git log
+2. 回退本地代码库：git reset --hard ID
+3. 推送到远程服务器：git push -f -u origin master
+4. 重新拉代码：git pull
 ```
 
