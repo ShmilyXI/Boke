@@ -1373,7 +1373,7 @@ var home = location.href,
           appId: mashiro_option.v_appId,
           appKey: mashiro_option.v_appKey,
           path: window.location.pathname,
-          placeholder: "你是我一生只会遇见一次的惊喜 ..."
+          placeholder: "请输入 ..."
         });
       }
     },

@@ -1,6 +1,6 @@
 # site name
-prefixName: Cx330
-siteName: 2020
+prefixName: XIAO
+siteName: 2021
 # favicon and site master avatar
 favicon: /images/favicon.ico
 url: https://github.com/ShmilyXI
@@ -125,7 +125,7 @@ bg:
   # - https://cdn.jsdelivr.net/gh/ShmilyXI/CDN@v1.0.9/img/background/1s_by_wlop-dc1sdan.jpg
 
 # 背景图片样式 空 原图效果 filter-dim 阴影 filter-grid 横条 filter-dot 点点
-bgclass: filter-dot
+bgclass: filter-grid
 
 # startdash url, title, desc img
 # url:链接的跳转地址
