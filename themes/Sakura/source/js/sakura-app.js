@@ -298,7 +298,7 @@ function code_highlight_style() {
       autocapitalize: "off",
       spellcheck: "false",
       contenteditable: "false",
-      design: "by hojun"
+      design: "by XIAO"
     };
     var ele_name = $("pre:eq(" + i + ")")[0].children[0].className;
     var lang = ele_name
@@ -509,7 +509,7 @@ function scrollBar() {
         }
       } else {
         // 文档阅读顶部导航条颜色
-        $("#bar").css("background", "skyblue");
+        $("#bar").css("background", "#8EB2E2");
       }
       // TODO：底部高度
       // $('.toc-container').css('height', $('.site-content').outerHeight())
@@ -1991,7 +1991,7 @@ $(function () {
     "https://2heng.xin/"
   );
   console.log(
-    "%c hojun %c",
+    "%c XIAO %c",
     "background:#24272A; color:#ffffff",
     "",
     "https://www.hojun.cn/"

@@ -160,7 +160,7 @@ thead tr th:not(:nth-last-child(1)){
 }
 
 .resume-content .content .container .experiences .container .job-meta .position {
-    color: #00d4ff;
+    color: #8EB2E2;
     font-size: 19px;
     font-weight: 400;
 }
@@ -189,7 +189,7 @@ thead tr th:not(:nth-last-child(1)){
 .resume-content .content .container .experiences .timeline {
     width: 2.5px;
     height: inherit;
-    background: #00d4ff;
+    background: #8EB2E2;
     float: left;
     margin-left: -28px;
     margin-right: 28px;
@@ -204,7 +204,7 @@ thead tr th:not(:nth-last-child(1)){
     height: 22px;
     border-radius: 11px;
     background-color: #fff;
-    border: 3px solid #00d4ff;
+    border: 3px solid #8EB2E2;
 }
 
 .resume-content .content .container .experiences .container .job-details::after {
@@ -215,7 +215,7 @@ thead tr th:not(:nth-last-child(1)){
     width: 11px;
     height: 11px;
     border-radius: 5.5px;
-    background: #00d4ff;
+    background: #8EB2E2;
 }
 
 .resume-content .resume-skill .skill-container {
@@ -249,7 +249,7 @@ thead tr th:not(:nth-last-child(1)){
     width: 90%;
     border-radius: 3px;
     height: 100%;
-    background-color: #00d4ff;
+    background-color: #8EB2E2;
 }
 
 .resume-content .resume-skill .skill-container li:nth-child(1) .progress::before {
@@ -508,7 +508,7 @@ thead tr th:not(:nth-last-child(1)){
 }
 
 .toggle-checky {
-    background: #6ecaf5;
+    background: #8EB2E2;
     border-radius: 5px;
     box-shadow: 1px 1px 3px #196f97;
     padding: 10px;
@@ -1735,7 +1735,7 @@ blockquote {
     position: absolute;
     top: -25px;
     left: 12px;
-    color: skyblue;
+    color: #8EB2E2;
     font-family: FontAwesome
 }
 
@@ -1745,7 +1745,7 @@ blockquote:after {
     position: absolute;
     bottom: -25px;
     right: -5px;
-    color: skyblue;
+    color: #8EB2E2;
     font-family: FontAwesome
 }
 
@@ -1998,7 +1998,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-    color: skyblue
+    color: #8EB2E2
 }
 
 a:focus {
@@ -2008,7 +2008,7 @@ a:focus {
 a:hover,
 a:active {
     outline: 0;
-    color: skyblue
+    color: #8EB2E2
 }
 
 .site-top {
@@ -2447,7 +2447,7 @@ a:active {
 }
 
 .site-title a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .site-title img {
@@ -2577,7 +2577,7 @@ a:active {
 }
 
 .site-top ul li a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .site-top ul li a:after {
@@ -2587,7 +2587,7 @@ a:active {
     bottom: -16px;
     height: 4px;
     border-radius: 3px;
-    background-color: skyblue;
+    background-color: #8EB2E2;
     width: 100%;
     max-width: 0;
     transition: max-width .25s ease-in-out
@@ -2599,7 +2599,7 @@ a:active {
     position: absolute;
     bottom: -21px;
     height: 6px;
-    background-color: skyblue;
+    background-color: #8EB2E2;
     width: 100%;
     max-width: 0;
     transition: max-width .25s ease-in-out
@@ -2804,7 +2804,7 @@ a:active {
 }
 
 .entry-title a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .p-time {
@@ -3216,8 +3216,8 @@ i.iconfont.hotpost {
 
 .navigator i:hover {
     color: #fff;
-    background: skyblue;
-    border: 2px solid skyblue;
+    background: #8EB2E2;
+    border: 2px solid #8EB2E2;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -3243,7 +3243,7 @@ i.iconfont.hotpost {
 }
 
 .site-info a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .footertext p {
@@ -3378,8 +3378,8 @@ i.iconfont.hotpost {
 }
 
 .entry-content a:hover {
-    color: skyblue;
-    text-decoration: underline skyblue
+    color: #8EB2E2;
+    text-decoration: underline #8EB2E2
 }
 
 h1.entry-title {
@@ -3597,7 +3597,7 @@ h1.page-title.mb- {
 }
 
 .post-tags a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .post-tags i {
@@ -3671,7 +3671,7 @@ h1.page-title.mb- {
 }
 
 .post-share ul li a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .post-share .show-share {
@@ -4245,7 +4245,7 @@ h3#comments-list-title {
 }
 
 .butterBar-message {
-    background: skyblue;
+    background: #8EB2E2;
     color: #fff;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -4477,7 +4477,7 @@ h1.works-title {
     font-style: italic;
     font-size: 20px;
     font-weight: 400;
-    color: skyblue;
+    color: #8EB2E2;
     margin-left: 30px;
     margin-top: 50px
 }
@@ -4508,7 +4508,7 @@ span.time {
 .ar-time i {
     padding: 10px;
     border-radius: 100px;
-    background: skyblue;
+    background: #8EB2E2;
     color: #fff
 }
 
@@ -4538,7 +4538,7 @@ span.time {
 span.ar-circle {
     height: 10px;
     width: 10px;
-    background: skyblue;
+    background: #8EB2E2;
     display: inline-block;
     position: absolute;
     left: -5px;
@@ -4631,7 +4631,7 @@ header.page-header {
 }
 
 span.sitename {
-    color: skyblue;
+    color: #8EB2E2;
     padding-bottom: 10px;
     display: block;
     -webkit-transition: all .3s;
@@ -4665,12 +4665,12 @@ span.sitename {
 
 .link-title span.fake-title {
     padding-left: 10px;
-    border-left: 3px solid skyblue
+    border-left: 3px solid #8EB2E2
 }
 
 .links ul li:before {
     content: "";
-    background-color: skyblue;
+    background-color: #8EB2E2;
     -webkit-transform: skew(45deg, 0);
     transform: skew(45deg, 0);
     width: 0;
@@ -4685,7 +4685,7 @@ span.sitename {
 
 .links ul li:hover {
     color: #27323a;
-    border: 1px solid skyblue
+    border: 1px solid #8EB2E2
 }
 
 .links ul li:hover:before {
@@ -5019,7 +5019,7 @@ a.page-numbers {
 }
 
 .comment h4 a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .comment hr {
@@ -5203,9 +5203,9 @@ a.page-numbers {
 }
 
 .comment-respond input[type='submit']:hover {
-    border: 1px solid skyblue;
+    border: 1px solid #8EB2E2;
     background: none !important;
-    color: skyblue
+    color: #8EB2E2
 }
 
 .comment-respond input[type='submit']:hover {
@@ -5328,7 +5328,7 @@ a.page-numbers {
 }
 
 .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
-    background-color: skyblue;
+    background-color: #8EB2E2;
     border-radius: 100%;
     content: "";
     display: block;
@@ -6064,7 +6064,7 @@ i.iconfont.js-toggle-search.iconsearch {
 }
 
 .sorry li a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .sorry-inner {
@@ -6083,15 +6083,15 @@ i.iconfont.js-toggle-search.iconsearch {
 .err-button.back a {
     padding: 10px 30px;
     margin: 0 10px;
-    border: 1px solid skyblue;
-    color: skyblue;
+    border: 1px solid #8EB2E2;
+    color: #8EB2E2;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px
 }
 
 #gohome {
-    background: skyblue;
+    background: #8EB2E2;
     color: #fff
 }
 
@@ -6235,7 +6235,7 @@ object {
 }
 
 #nprogress .bar {
-    background: skyblue;
+    background: #8EB2E2;
     position: fixed;
     z-index: 1031;
     top: 0;
@@ -6250,7 +6250,7 @@ object {
     right: 0;
     width: 100px;
     height: 100%;
-    box-shadow: 0 0 10px skyblue, 0 0 5px skyblue;
+    box-shadow: 0 0 10px #8EB2E2, 0 0 5px #8EB2E2;
     opacity: 1;
     -webkit-transform: rotate(3deg) translate(0px, -4px);
     -ms-transform: rotate(3deg) translate(0px, -4px);
@@ -6274,8 +6274,8 @@ object {
     height: 20px;
     box-sizing: border-box;
     border: solid 3px transparent;
-    border-top-color: skyblue;
-    border-left-color: skyblue;
+    border-top-color: #8EB2E2;
+    border-left-color: #8EB2E2;
     border-radius: 50%;
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite
@@ -6611,7 +6611,7 @@ i.iconfont.down {
     }
 
     .links ul li:hover .sitename {
-        color: skyblue
+        color: #8EB2E2
     }
 
     .links ul li:hover .linkdes {
@@ -6868,7 +6868,7 @@ i.iconfont.down {
 
     #mo-nav ul li a:hover {
         cursor: pointer;
-        color: skyblue
+        color: #8EB2E2
     }
 
     .we-content li {
@@ -6926,7 +6926,7 @@ i.iconfont.down {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #00d4ff
+    background-color: #8EB2E2
 }
 
 @keyframes poi-deg {
@@ -7406,7 +7406,7 @@ i.iconfont.down {
 
 .no-logged a {
     display: initial;
-    color: #00d4ff;
+    color: #8EB2E2;
     font-size: 14px;
     padding: 0 5px;
     text-decoration: underline
@@ -7879,7 +7879,7 @@ button.botui-actions-buttons-button {
     padding-left: 35px;
     padding-right: 15px;
     padding-top: 11px;
-    text-decoration-line: none
+    text-decoration-line: none;
 }
 
 .logolink .sakurasono {
@@ -7893,17 +7893,18 @@ button.botui-actions-buttons-button {
     padding-bottom: 0;
     padding-top: 1px;
     text-size-adjust: 100%;
-    width: auto
+    width: auto;
+    transition: all .3s;
 }
 
 .logolink a:hover .sakurasono {
-    background-color: skyblue;
+    background-color: #8EB2E2;
     color: #fff
 }
 
 .logolink a:hover .shironeko,
 .logolink a:hover rt {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .logolink.moe-mashiro a {
@@ -7927,7 +7928,7 @@ button.botui-actions-buttons-button {
 }
 
 .logolink.moe-mashiro .shironeko {
-    margin-left: -5px;
+    /* margin-left: -5px; */
     font-size: 20px;
 }
 
@@ -8377,7 +8378,7 @@ input[type=radio]:checked:before {
 
 @media(min-width:861px) {
     .hide-live2d {
-        background-color: skyblue;
+        background-color: #8EB2E2;
         bottom: 156px;
         visibility: visible;
         min-height: 38.75px
@@ -8885,15 +8886,15 @@ li>ol {
 }
 
 .art .art-content #archives a:hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .art .art-content #archives .al_year {
     margin-left: 90px;
     display: inline-block;
     padding: 2px;
-    border-top: 3px solid #6ecaf5;
-    border-bottom: 3px solid #6ecaf5;
+    border-top: 3px solid #8EB2E2;
+    border-bottom: 3px solid #8EB2E2;
     border-radius: 5px;
     color: #999;
 }
@@ -8908,7 +8909,7 @@ li>ol {
     font-size: 14px;
     padding: 5px;
     border-radius: 10px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     color: #fff;
     margin-top: -4px;
     position: relative;
@@ -8921,7 +8922,7 @@ li>ol {
     top: calc(50% - 2px);
     height: 2px;
     width: 15px;
-    background: #6ecaf5;
+    background: #8EB2E2;
 }
 
 .art .art-content #archives a {
@@ -8935,7 +8936,7 @@ li>ol {
 .art .art-content .al_mon_list .al_post_list>li:before {
     position: absolute;
     left: 116px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     height: 12px;
     width: 12px;
     border-radius: 6px;
@@ -8946,7 +8947,7 @@ li>ol {
 .art .art-content .al_mon_list .al_post_list>li:after {
     position: absolute;
     left: 118px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     height: 8px;
     width: 8px;
     border-radius: 6px;
@@ -8957,7 +8958,7 @@ li>ol {
 .art-content #archives .al_mon_list .al_mon:before {
     position: absolute;
     left: 113px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     height: 18px;
     width: 18px;
     border-radius: 9px;
@@ -8968,7 +8969,7 @@ li>ol {
 .art-content #archives .al_mon_list .al_mon:after {
     position: absolute;
     left: 116px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     height: 12px;
     width: 12px;
     border-radius: 6px;
@@ -8993,7 +8994,7 @@ li>ol {
     max-height: 100%;
     height: 100%;
     width: 3px;
-    background: #6ecaf5;
+    background: #8EB2E2;
     position: absolute;
     left: 120px;
     content: "";
@@ -9095,7 +9096,7 @@ a.toc-link {
 }
 
 .is-active-link::before {
-    background-color: skyblue !important
+    background-color: #8EB2E2 !important
 }
 
 .flipx {
@@ -9262,11 +9263,11 @@ a.toc-link {
 
 .motion-switcher-table th:hover {
     background-color: rgba(245, 245, 245, .5);
-    color: skyblue
+    color: #8EB2E2
 }
 
 .motion-switcher-table .on-hover {
-    color: skyblue
+    color: #8EB2E2
 }
 
 .motion-container {
@@ -9549,8 +9550,8 @@ a.toc-link {
 }
 
 .insert-image-tips:hover {
-    color: skyblue;
-    border: 1px solid skyblue
+    color: #8EB2E2;
+    border: 1px solid #8EB2E2
 }
 
 .insert-image-button {
@@ -9565,8 +9566,8 @@ a.toc-link {
 }
 
 .insert-image-tips-hover {
-    color: skyblue;
-    border: 1px solid skyblue
+    color: #8EB2E2;
+    border: 1px solid #8EB2E2
 }
 
 .upload-image-preview {
