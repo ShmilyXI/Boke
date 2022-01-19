@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div style="padding-top: 5vw; padding-left: 5vw; min-height: 100vh; background-color: #eaeaea; width: 100%">
+      <h1>基础图形</h1>
+
+      <h4>矩形</h4>
+      <svg width="100" height="100">
+        <rect x="0" y="0" width="100" height="100" fill="#999"></rect>
+      </svg>
+
+      <h4>圆形</h4>
+      <svg width="100" height="100">
+        <circle cx="50" cy="50" r="50" fill="#999"></circle>
+      </svg>
+
+      <h4>椭圆</h4>
+      <svg width="100" height="100">
+        <ellipse cx="50" cy="50" rx="50" ry="25" fill="#999"></ellipse>
+      </svg>
+
+      <h4>直线</h4>
+      <svg width="100" height="100">
+        <line x1="0" y1="0" x2="100" y2="100" stroke="#999" stroke-width="1px"></line>
+      </svg>
+
+      <h4>多边形</h4>
+      <svg width="100" height="100">
+        <polygon fill="#999" stroke="none" points="0,0 50,0 50,50 55,50 55,0 100,0 100,100 0,100 0,0"></polygon>
+      </svg>
+
+      <h4>折线</h4>
+      <svg width="100" height="100">
+        <polyline
+          points="0,0 10,10 30,10 30,30 50,30 50,50 70,50"
+          fill="none"
+          stroke="#999"
+          stroke-width="1px"
+        ></polyline>
+      </svg>
+
+      <h4>path</h4>
+      <svg width="100" height="100">
+        <path d="M0 0 L100 100 L100 60 L40 0" fill="#999"></path>
+      </svg>
+
+      <h4>path Z</h4>
+      <svg width="100" height="100">
+        <path d="M0 0 H 100 V 100 H 0 Z" fill="#999"></path>
+      </svg>
+
+      <h4>path 小写</h4>
+      <svg width="100" height="100">
+        <path d="M10 0 h 90 v 100 h -90 Z" fill="#999"></path>
+      </svg>
+
+      <h4>path 弧形</h4>
+      <svg width="100" height="100" viewBox="0 0 400 400">
+        <path
+          d="M10 315
+                L 110 215
+                A 30 50 -45 0 1 215.1 109.9
+                L 315 10"
+          stroke="black"
+          fill="#999"
+          stroke-width="2"
+        />
+      </svg>
+
+      <h2>颜色及边框</h2>
+
+      <h4>fill</h4>
+      <svg width="100" height="100">
+        <rect x="0" y="0" width="100" height="100" fill="#999"></rect>
+      </svg>
+      <svg width="100" height="100">
+        <rect x="0" y="0" width="100" height="100" fill="#999" fill-opacity="0.5"></rect>
+      </svg>
+
+      <h4>stroke</h4>
+      <svg width="100" height="100">
+        <rect x="0" y="0" width="100" height="100" fill="#999" stroke="#000" stroke-width="10"></rect>
+      </svg>
+      <svg width="100" height="100">
+        <rect
+          x="0"
+          y="0"
+          width="100"
+          height="100"
+          fill="#999"
+          stroke="#000"
+          stroke-width="10"
+          stroke-opacity="0.5"
+        ></rect>
+      </svg>
+
+      <h4>stroke-linecap</h4>
+      <svg width="400" height="200">
+        <polyline
+          points="10 10 60 50 110 10"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linecap="butt"
+        ></polyline>
+        <polyline
+          points="130 10 180 50 230 10"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linecap="square"
+        ></polyline>
+        <polyline
+          points="250 10 300 50 350 10"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linecap="round"
+        ></polyline>
+        <polyline
+          points="10 70 60 110 110 70"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linejoin="miter"
+        ></polyline>
+        <polyline
+          points="130 70 180 110 230 70"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linejoin="round"
+        ></polyline>
+        <polyline
+          points="250 70 300 110 350 70"
+          fill="none"
+          stroke-width="7"
+          stroke="#999"
+          stroke-linejoin="bevel"
+        ></polyline>
+      </svg>
+
+      <h4>线性渐变</h4>
+      <svg width="300" height="200">
+        <defs>
+          <linearGradient id="test">
+            <stop offset="5%" stop-color="#12c2e9" />
+            <stop offset="85%" stop-color="#c471ed" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <rect fill="url(#test)" x="10" y="10" width="200" height="100"></rect>
+      </svg>
+
+      <h4>垂直渐变</h4>
+      <svg width="300" height="300">
+        <defs>
+          <linearGradient id="test1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="5%" stop-color="#12c2e9" />
+            <stop offset="85%" stop-color="#c471ed" />
+          </linearGradient>
+        </defs>
+        <rect fill="url(#test1)" x="10" y="10" width="200" height="100"></rect>
+      </svg>
+
+      <h4>径向渐变</h4>
+      <svg width="300" height="300">
+        <defs>
+          <radialGradient id="test3">
+            <stop offset="5%" stop-color="#c471ed" />
+            <stop offset="55%" stop-color="#12c2e9" />
+          </radialGradient>
+        </defs>
+        <rect fill="url(#test3)" x="10" y="10" width="100" height="100"></rect>
+      </svg>
+      <svg width="300" height="300">
+        <defs>
+          <radialGradient id="test4" cx="0" cy="0" r="0.5" fy="0.25" fx="0.25">
+            <stop offset="0%" stop-color="#c471ed" />
+            <stop offset="100%" stop-color="#12c2e9" />
+          </radialGradient>
+        </defs>
+        <rect fill="url(#test4)" x="10" y="10" width="100" height="100"></rect>
+      </svg>
+
+      <svg width="300" height="300">
+        <defs>
+          <g id="copyme">
+            <circle r="10" fill="#999" />
+          </g>
+        </defs>
+        <use x="10" y="10" xlink:href="#copyme" />
+        <use x="50" y="10" xlink:href="#copyme" />
+      </svg>
+
+      <svg width="300" height="300">
+        <defs>
+          <pattern id="bg_red_circle" x="10" y="10" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="10" stroke="#999" fill="none"></circle>
+          </pattern>
+        </defs>
+        <rect width="200" height="200" stroke="blue" fill="url(#bg_red_circle)"></rect>
+      </svg>
+
+      <svg width="300" height="300">
+        <defs>
+          <pattern id="bg_red_circle1" x="10" y="10" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="10" stroke="#999" fill="none" />
+          </pattern>
+        </defs>
+        <rect width="200" height="200" fill="none" stroke-width="20" stroke="url(#bg_red_circle1)"></rect>
+      </svg>
+
+      <h3>文字</h3>
+      <svg width="100" height="100">
+        <text x="10" y="20">Hello word</text>
+      </svg>
+
+      <svg width="100" height="200">
+        <text x="40" y="20" text-anchor="start">Hello</text>
+        <text x="40" y="50" text-anchor="end">Hello</text>
+        <text x="40" y="80" text-anchor="middle">Hello</text>
+        <text x="40" y="110" text-anchor="inherit">Hello</text>
+        <line x1="40" x2="40" y1="0" y2="135" stroke="#999" stroke-opacity="0.5"></line>
+      </svg>
+
+      <svg width="200" height="200">
+        <defs>
+          <linearGradient id="fillTest">
+            <stop offset="5%" stop-color="#fc5c7d" />
+            <stop offset="85%" stop-color="#6a82fb" />
+          </linearGradient>
+        </defs>
+        <text x="40" y="20" fill="#999">Hello</text>
+        <text x="40" y="40" fill="skyblue">Hello</text>
+        <text x="40" y="60" fill="#ee2">Hello</text>
+        <text x="40" y="80" fill="rgb(255,0,0)">Hello</text>
+        <text x="40" y="100" fill="url(#fillTest)">Hello</text>
+      </svg>
+
+      <svg width="200" height="200">
+        <defs>
+          <linearGradient id="strTest">
+            <stop offset="5%" stop-color="#00f260" />
+            <stop offset="85%" stop-color="#0575e6" />
+          </linearGradient>
+        </defs>
+        <text x="40" y="20" stroke="#999">Hello</text>
+        <text x="40" y="40" stroke="skyblue">Hello</text>
+        <text x="40" y="60" stroke="#ee2">Hello</text>
+        <text x="40" y="80" stroke="rgb(255,0,0)">Hello</text>
+        <text x="40" y="100" stroke="url(#strTest)">Hello</text>
+      </svg>
+
+      <svg width="200" height="200">
+        <g fill="#999">
+          <circle cx="10" cy="10" width="30" height="30" r="10"></circle>
+          <circle cx="40" cy="10" width="30" height="30" r="10"></circle>
+        </g>
+      </svg>
+
+      <h2>transform</h2>
+      <svg width="200" height="200">
+        <circle cx="30" cy="30" r="15" fill="#999" />
+        <circle cx="30" cy="30" r="15" fill="#999" transform="translate(40)" />
+        <circle cx="30" cy="30" r="15" fill="#999" transform="translate(40,40)" />
+      </svg>
+
+      <svg width="200" height="200">
+        <rect x="60" y="0" width="40" height="40" fill="#999" transform="rotate(45)" />
+      </svg>
+
+      <svg width="200" height="200">
+        <rect x="10" y="0" width="40" height="40" fill="none" stroke="#999" />
+        <rect x="60" y="0" width="40" height="40" fill="none" stroke="#999" transform="skewX(40)" />
+        <rect x="50" y="0" width="40" height="40" fill="none" stroke="#999" transform="skewY(50)" />
+      </svg>
+
+      <svg width="200" height="200">
+        <circle cx="30" cy="30" r="15" fill="none" stroke="#999" transform="scale(0.5)" />
+        <circle cx="30" cy="30" r="15" fill="none" stroke="pink" transform="scale(1)" />
+        <circle cx="30" cy="30" r="15" fill="none" stroke="skyblue" transform="scale(1.5)" />
+        <circle
+          cx="100"
+          cy="30"
+          r="15"
+          fill="none"
+          stroke="#999"
+          transform="scale(0.5)"
+          style="transform-box: fill-box; transform-origin: center"
+        />
+        <circle
+          cx="100"
+          cy="30"
+          r="15"
+          fill="none"
+          stroke="pink"
+          transform="scale(1)"
+          style="transform-box: fill-box; transform-origin: center"
+        />
+        <circle
+          cx="100"
+          cy="30"
+          r="15"
+          fill="none"
+          stroke="skyblue"
+          transform="scale(1.5)"
+          style="transform-box: fill-box; transform-origin: center"
+        />
+      </svg>
+
+      <h2>裁剪、遮罩</h2>
+      <svg width="200" height="200">
+        <defs>
+          <clipPath id="cTest">
+            <rect x="10" y="10" width="100" height="50" />
+          </clipPath>
+        </defs>
+        <rect x="10" y="10" width="100" height="100" fill="#999" clip-path="url(#cTest)"></rect>
+      </svg>
+
+      <svg width="200" height="200">
+        <defs>
+          <clipPath id="cTest1">
+            <text x="10" y="20" font-size="10">用文本定范围</text>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#cTest1)">
+          <rect x="10" y="10" width="50" height="50" fill="#999" />
+          <rect x="45" y="10" width="50" height="50" fill="green" />
+        </g>
+      </svg>
+
+      <svg width="200" height="200">
+        <defs>
+          <linearGradient id="Gradient">
+            <stop offset="0" stop-color="white" stop-opacity="0" />
+            <stop offset="1" stop-color="white" stop-opacity="1" />
+          </linearGradient>
+          <clipPath id="cp">
+            <rect x="60" y="0" width="35" height="35" />
+          </clipPath>
+          <mask id="Mask">
+            <rect x="0" y="0" width="50" height="50" fill="url(#Gradient)" />
+          </mask>
+        </defs>
+        <image
+          xlink:href="https://photo.16pic.com/00/53/26/16pic_5326745_b.jpg"
+          x="0"
+          y="0"
+          height="50px"
+          width="50px"
+          mask="url(#Mask)"
+        />
+        <image
+          xlink:href="https://photo.16pic.com/00/53/26/16pic_5326745_b.jpg"
+          x="60"
+          y="0"
+          height="50px"
+          width="50px"
+          clip-path="url(#cp)"
+        />
+      </svg>
+
+      <h2>fillter</h2>
+      <svg width="200" height="200">
+        <defs>
+          <filter id="blurFilter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+          </filter>
+        </defs>
+        <rect filter="url(#blurFilter)" x="10" y="10" width="50" height="50" fill="#999"></rect>
+      </svg>
+
+      <svg width="200" height="200">
+        <defs>
+          <filter id="blurFilter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feOffset in="blur" dx="10" dy="12" result="offsetBlur" />
+            <feMerge>
+              <feMergeNode in="offsetBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <image
+          xlink:href="https://photo.16pic.com/00/53/26/16pic_5326745_b.jpg"
+          x="10"
+          y="0"
+          height="50px"
+          width="50px"
+          filter="url(#blurFilter)"
+        ></image>
+      </svg>
+
+      <svg width="200" height="200">
+        <image
+          xlink:href="https://photo.16pic.com/00/53/26/16pic_5326745_b.jpg"
+          x="0"
+          y="0"
+          height="50px"
+          width="50px"
+        ></image>
+      </svg>
+
+      <svg width="200" height="200">
+        <rect id="myRect" x="10" y="10" width="50" height="50" fill="#999"></rect>
+      </svg>
+      <script>
+        const myRectDom = document.getElementById("myRect");
+        myRectDom.addEventListener(
+          "click",
+          (e) => {
+            myRectDom.setAttribute("width", 80);
+            myRectDom.setAttribute("height", 80);
+          },
+          false
+        );
+      </script>
+      <style>
+        #myRect {
+          transition: all 1s;
+        }
+      </style>
+
+      <h2>动画</h2>
+      <svg width="200" height="200">
+        <line x1="10" x2="90" y1="10" y2="10" stroke-width=".5" stroke="#999" stroke-dasharray="20" ;></line>
+        <line
+          x1="10"
+          x2="90"
+          y1="20"
+          y2="20"
+          stroke-width=".5"
+          stroke="#999"
+          stroke-dasharray="20"
+          ;
+          stroke-dashoffset="-10"
+        ></line>
+        <line
+          x1="10"
+          x2="90"
+          y1="30"
+          y2="30"
+          stroke-width=".5"
+          stroke="#999"
+          stroke-dasharray="20"
+          ;
+          stroke-dashoffset="10"
+        ></line>
+      </svg>
+    </div>
+  </body>
+</html>

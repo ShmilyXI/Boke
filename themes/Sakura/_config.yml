@@ -14,35 +14,24 @@ mathjax: 1
 notice: 使用JS实现的数据结构及算法系列文章准备中...
 lazyloadImg: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg
 
-
 #  创建一个页面
 # 1. _config.yml 配置路由
 # 2. /source文件夹内创建对应的页面文件
 # 3. 如果需要自定义layout,在themes/Sakura/layout里面创建好ejs文件,然后在source里面的md描述加上layout: 对应的ejs文件名
 menus:
   首页: { path: /, fa: fa-fort-awesome faa-shake }
-  归档:
-    {
-      path: /archives,
-      fa: fa-archive faa-shake,
-      submenus:
-        {
+  归档: { path: /archives, fa: fa-archive faa-shake, submenus: {
           技术: { path: /categories/技术/, fa: fa-code },
           # 生活: { path: /categories/生活/, fa: fa-file-text-o },
           # 资源: { path: /categories/资源/, fa: fa-cloud-download },
           # 转载: { path: /categories/转载/, fa: fa-book },
-        },
-    }
+        } }
   # 随想: {path: /categories/随想/, fa: fa-commenting-o }
-  列表:
-    {
-      path: javascript:;,
-      fa: fa-list-ul faa-vertical,
-      submenus: { 
-        书单: { path: /tags/书单/, fa: fa-th-list faa-bounce }, 
-        # 图集: { path: /gallery/, fa: fa-photo }, 
-        歌单: { path: /music/, fa: fa-headphones } },
-    }
+  列表: { path: javascript:;, fa: fa-list-ul faa-vertical, submenus: {
+          书单: { path: /tags/书单/, fa: fa-th-list faa-bounce },
+          # 图集: { path: /gallery/, fa: fa-photo },
+          歌单: { path: /music/, fa: fa-headphones },
+        } }
   # 番组: {path: /bangumi/, fa: fa-film faa-vertical }
   留言板: { path: /comment/, fa: fa-pencil-square-o faa-tada }
   # 友人帐: { path: /links/, fa: fa-link faa-shake }
@@ -102,7 +91,12 @@ social:
 msocial:
   qq: { url: https://wpa.qq.com/msgrd?v=3&uin=1262260527&site=qq&menu=yes, fa: fa-qq, color: 25c6fe }
   github: { url: https://github.com/ShmilyXI, fa: fa-github, color: 333 }
-  wechat: { url: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/BokeImage/images/wechart.jpg, fa: fa-wechat, color: 01cf0b }
+  wechat:
+    {
+      url: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/BokeImage/images/wechart.jpg,
+      fa: fa-wechat,
+      color: 01cf0b,
+    }
 
 donate:
   alipay: /img/custom/donate/AliPayQR.jpg
@@ -127,7 +121,7 @@ aplayer:
   preload: auto
   volume: 0.7
   mutex: true
-  theme: '#8EB2E2'
+  theme: "#8EB2E2"
 # Valine
 # https://leancloud.cn/dashboard/data.html?appid=1grSYbPmklaQJKIROx5jbYh2-gzGzoHsz#/Comment
 valine: true

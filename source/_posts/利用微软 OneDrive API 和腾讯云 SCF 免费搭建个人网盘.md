@@ -1,7 +1,7 @@
 ---
 title: 利用微软 OneDrive API 和腾讯云 SCF 免费搭建个人网盘
 author: ShmilyXI
-avatar: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/1055543572.jpeg
+avatar: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/BokeImage/images/avatar.jpg
 authorLink: "http://www.shmilyxy.cn"
 categories: 技术
 comments: true
@@ -16,7 +16,7 @@ photos: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/image/QQ20200605-12
 
 ## SCF 简介
 
- 腾讯云云函数（Serverless Cloud Function，SCF）是腾讯云为企业和开发者们提供的无服务器执行环境，帮助您在无需购买和管理服务器的情况下运行代码，是实时文件处理和数据处理等场景下理想的计算平台。
+腾讯云云函数（Serverless Cloud Function，SCF）是腾讯云为企业和开发者们提供的无服务器执行环境，帮助您在无需购买和管理服务器的情况下运行代码，是实时文件处理和数据处理等场景下理想的计算平台。
 
 您只需使用 SCF 平台支持的语言编写核心代码并设置代码运行的条件，即可在腾讯云基础设施上弹性、安全地运行代码。
 
@@ -26,9 +26,8 @@ Serverless 拥有近乎无限的扩容能力，空闲时，不运行任何资源
 
 腾讯云 SCF 目前仍在 [公测](https://cloud.tencent.com/document/product/583/17299) 阶段，所有用户可免费使用，结束日期待定。公测结束后，每月仍可享受足量的[免费资源使用量和免费调用次数](https://cloud.tencent.com/document/product/583/12282)，但收取 `外网出流量` 费用。
 
-
 | 资源类型   | 每月免费额度 |
-|------------|--------------|
+| ---------- | ------------ |
 | 资源使用量 | 40 万 GBs    |
 | 调用次数   | 100 万次     |
 
@@ -100,7 +99,7 @@ https://.../authorization_code?code=...
 在新面板中，将 `内存` 修改为 `512M`，当然 `64M` 也是可以运行的，需要说明的是，内存越大可用的免费时长越少；`超时时间` 填写 `30`，随后添加几个 `环境变量`，它们的功能如下：
 
 | 名称         | 含义           | 备注                                             | 示例         |
-|--------------|----------------|--------------------------------------------------|--------------|
+| ------------ | -------------- | ------------------------------------------------ | ------------ |
 | sitename     | 站点名称       | 无                                               | 我的网盘     |
 | public_path  | 要展示的根路径 | 无                                               | /            |
 | private_path | 要展示的根路径 | 使用自定义域名时必须设置                         | /            |
@@ -115,6 +114,7 @@ https://.../authorization_code?code=...
 ![](https://img10.360buyimg.com/img/jfs/t1/49705/38/9495/37688/5d6b9886Ec0e6f171/119cbeef724cd5c7.png)
 
 ## 自定义域名（可选）
+
 进入函数服务的 `触发方式` 面板，点击打开 `SCF_API_SERVICE。`
 
 ![](https://img14.360buyimg.com/img/jfs/t1/58938/40/9235/37925/5d6b9a15E2a329579/a6ff29214e8578c4.png)
@@ -159,8 +159,8 @@ https://.../authorization_code?code=...
 
 现在就可以通过自定义域名访问你的网盘了。
 
-
 ## 使用 Github Pages 缩短长链接（可选）
+
 如果你没有域名和服务器，可以通过 `Github Pages` 跳转的方式，适当缩短首次访问的路径长度，最终可以通过 `username.github.io` 打开你的网盘。
 
 注册并登录 [Github](https://github.com/join)，随后打开 [该仓库](https://github.com/vcheckzen/redirect)，点击靠近右上角的 `Fork`。稍等片刻，打开页面中部的 `index.html`。
@@ -188,4 +188,3 @@ https://.../authorization_code?code=...
 ![](https://img12.360buyimg.com/img/jfs/t1/43663/2/13575/33132/5d6ba655E9e64f8c4/b8a6c84311f74234.png)
 
 现在，就可以通过 `你的 Github 用户名.github.io` 访问网盘了。
-

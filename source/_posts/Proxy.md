@@ -1,8 +1,8 @@
 ---
 title: Proxy
 author: ShmilyXI
-avatar: 'https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/1055543572.jpeg'
-authorLink: 'http://www.shmilyxy.cn'
+avatar: "https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/BokeImage/images/avatar.jpg"
+authorLink: "http://www.shmilyxy.cn"
 categories: 技术
 comments: true
 date: 2020-05-05 11:20:56
@@ -13,9 +13,10 @@ keywords: Proxy
 description: Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 photos: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/image/QQ20200605-123949@2x.png
 ---
+
 # Proxy
 
->  参考 [Proxy](https://es6.ruanyifeng.com/#docs/proxy)
+> 参考 [Proxy](https://es6.ruanyifeng.com/#docs/proxy)
 
 ## 1. Proxy 提供了哪些拦截方式？
 
@@ -29,35 +30,31 @@ Proxy 构造函数接收两个参数，第一个参数是需要拦截的目标�
 
 ```js
 const person = {
-    name: 'tom'
-}
+  name: "tom",
+};
 // 如果第二个参数为空对象
 const proxy = new Proxy(person, {});
 proxy === person; // true
 
 // 第二个参数不为空
 const proxy = new Proxy(person, {
-    get(target, prop) {
-        console.log(`${prop} is ${target[prop]}`);
-        return target[prop];
-    }
-})
-proxy.name // 'name is tom'
+  get(target, prop) {
+    console.log(`${prop} is ${target[prop]}`);
+    return target[prop];
+  },
+});
+proxy.name; // 'name is tom'
 ```
 
-Proxy 支持13种拦截操作，本文将会重点介绍其中四种。
-
-
+Proxy 支持 13 种拦截操作，本文将会重点介绍其中四种。
 
 ![image_1e3br0h5t2kvb5q5mo1r8t79c9.png-127.3kB](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/image/SMuVDW.jpg)
-
-
 
 1. **get(target, prop, receiver)**：拦截对象属性的访问。
 2. **set(target, prop, value, receiver)**：拦截对象属性的设置，最后返回一个布尔值。
 3. **apply(target, object, args)**：用于拦截函数的调用，比如 `proxy()`。
-4. **construct(target, args)**：方法用于拦截 new 操作符，比如 `new proxy()`。为了使 new操作符在生成的Proxy对象上生效，用于初始化代理的目标对象自身必须具有 [[Construct]] 内部方法（即 new target 必须是有效的）。
-5. **has(target, prop)**：拦截例如 prop in proxy的操作，返回一个布尔值。
+4. **construct(target, args)**：方法用于拦截 new 操作符，比如 `new proxy()`。为了使 new 操作符在生成的 Proxy 对象上生效，用于初始化代理的目标对象自身必须具有 [[Construct]] 内部方法（即 new target 必须是有效的）。
+5. **has(target, prop)**：拦截例如 prop in proxy 的操作，返回一个布尔值。
 6. **deleteProperty(target, prop)**：拦截例如 `delete proxy[prop]` 的操作，返回一个布尔值。
 7. **ownKeys(target)**：拦截 `Object.getOwnPropertyNames(proxy)`、`Object.keys(proxy)`、`for in` 循环等等操作，最终会返回一个数组。
 8. **getOwnPropertyDescriptor(target, prop)**：拦截 `Object.getOwnPropertyDescriptor(proxy, propKey)`，返回属性的描述对象。
@@ -73,7 +70,7 @@ Proxy 支持13种拦截操作，本文将会重点介绍其中四种。
 
 ![image_1e442ld7g6legdo15362m1ke733.png-109.3kB](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/image/t4a0GM.jpg)
 
-### 2.1  `Object.defineProperty` 不能监听所有属性
+### 2.1 `Object.defineProperty` 不能监听所有属性
 
 `Object.defineProperty` 无法一次性监听对象所有属性，必须遍历或者递归来实现。
 
@@ -118,7 +115,7 @@ Proxy 支持13种拦截操作，本文将会重点介绍其中四种。
      })
    });
    /* Proxy 生效，Object.defineProperty 不生效 */
-   girl.hobby = "game"; 
+   girl.hobby = "game";
 ```
 
 ### 2.3. `Object.defineProperty` 无法响应数组操作
@@ -126,39 +123,39 @@ Proxy 支持13种拦截操作，本文将会重点介绍其中四种。
 `Object.defineProperty` 可以监听数组的变化，`Object.defineProperty` 无法对 `push`、`shift`、`pop`、`unshift` 等方法进行响应。
 
 ```js
-   const arr = [1, 2, 3];
-   /* Proxy 监听数组*/
-   arr = new Proxy(arr, {
-     get() {},
-     set() {}
-   })
-   /* Object.defineProperty */
-   arr.forEach((item, index) => {
-     Object.defineProperty(arr, `${index}`, {
-       set() {},
-       get() {}
-     })
-   })
-   
-   arr[0] = 10; // 都生效
-   arr[3] = 10; // 只有 Proxy 生效
-   arr.push(10); // 只有 Proxy 生效
+const arr = [1, 2, 3];
+/* Proxy 监听数组*/
+arr = new Proxy(arr, {
+  get() {},
+  set() {},
+});
+/* Object.defineProperty */
+arr.forEach((item, index) => {
+  Object.defineProperty(arr, `${index}`, {
+    set() {},
+    get() {},
+  });
+});
+
+arr[0] = 10; // 都生效
+arr[3] = 10; // 只有 Proxy 生效
+arr.push(10); // 只有 Proxy 生效
 ```
 
-对于新增加的数组项，`Object.defineProperty` 依旧无法监听到。因此，在 Mobx 中为了监听数组的变化，默认将数组长度设置为1000，监听 0-999 的属性变化。
+对于新增加的数组项，`Object.defineProperty` 依旧无法监听到。因此，在 Mobx 中为了监听数组的变化，默认将数组长度设置为 1000，监听 0-999 的属性变化。
 
 ```js
-   /* mobx 的实现 */
-   const arr = [1, 2, 3];
-   /* Object.defineProperty */
-   [...Array(1000)].forEach((item, index) => {
-     Object.defineProperty(arr, `${index}`, {
-       set() {},
-       get() {}
-     })
-   });
-   arr[3] = 10; // 生效
-   arr[4] = 10; // 生效
+/* mobx 的实现 */
+const arr = [1, 2, 3];
+/* Object.defineProperty */
+[...Array(1000)].forEach((item, index) => {
+  Object.defineProperty(arr, `${index}`, {
+    set() {},
+    get() {},
+  });
+});
+arr[3] = 10; // 生效
+arr[4] = 10; // 生效
 ```
 
 如果想要监听到 `push`、`shift`、`pop`、`unshift`等方法，该怎么做呢？在 Vue 和 Mobx 中都是通过重写原型实现的。
@@ -166,25 +163,25 @@ Proxy 支持13种拦截操作，本文将会重点介绍其中四种。
 在定义变量的时候，判断其是否为数组，如果是数组，那么就修改它的 `__proto__`，将其指向 `subArrProto`，从而实现重写原型链。
 
 ```js
-   const arrayProto = Array.prototype;
-   const subArrProto = Object.create(arrayProto);
-   const methods = ['pop', 'shift', 'unshift', 'sort', 'reverse', 'splice', 'push'];
-   methods.forEach(method => {
-     /* 重写原型方法 */
-     subArrProto[method] = function() {
-       arrayProto[method].call(this, ...arguments);
-     };
-     /* 监听这些方法 */
-     Object.defineProperty(subArrProto, method, {
-       set() {},
-       get() {}
-     })
-   })
+const arrayProto = Array.prototype;
+const subArrProto = Object.create(arrayProto);
+const methods = ["pop", "shift", "unshift", "sort", "reverse", "splice", "push"];
+methods.forEach((method) => {
+  /* 重写原型方法 */
+  subArrProto[method] = function () {
+    arrayProto[method].call(this, ...arguments);
+  };
+  /* 监听这些方法 */
+  Object.defineProperty(subArrProto, method, {
+    set() {},
+    get() {},
+  });
+});
 ```
 
 ### 2.4 Proxy 拦截方式更多
 
-`Proxy` 提供了13种拦截方法，包括拦截 `constructor`、`apply`、`deleteProperty` 等等，而 `Object.defineProperty` 只有 `get` 和 `set`。
+`Proxy` 提供了 13 种拦截方法，包括拦截 `constructor`、`apply`、`deleteProperty` 等等，而 `Object.defineProperty` 只有 `get` 和 `set`。
 
 ### 2.5. `Object.defineProperty` 兼容性更好
 
@@ -198,18 +195,18 @@ Proxy 是新出的 API，兼容性还不够好，不支持 IE 全系列。
 
 ```js
 const person = {
-    name: 'tom',
-    age: 20,
-    _sex: 'male'
-}
+  name: "tom",
+  age: 20,
+  _sex: "male",
+};
 const proxy = new Proxy(person, {
-    get(target, prop) {
-        if (prop[0] === '_') {
-            throw new Error(`${prop} is private attribute`);
-        }
-        return target[prop]
+  get(target, prop) {
+    if (prop[0] === "_") {
+      throw new Error(`${prop} is private attribute`);
     }
-})
+    return target[prop];
+  },
+});
 proxy.name; // 'tom'
 proxy._sex; // _sex is private attribute
 ```
@@ -218,24 +215,24 @@ proxy._sex; // _sex is private attribute
 
 ```js
 let person = {
-    name: 'tom',
-    age: 20
-}
+  name: "tom",
+  age: 20,
+};
 const defaults = (obj, initial) => {
-    return new Proxy(obj, {
-        get(target, prop) {
-            if (prop in target) {
-                return target[prop]
-            }
-            return initial
-        }
-    })
-}
+  return new Proxy(obj, {
+    get(target, prop) {
+      if (prop in target) {
+        return target[prop];
+      }
+      return initial;
+    },
+  });
+};
 person = defaults(person, 0);
-person.name // 'tom'
-person.sex // 0
+person.name; // 'tom'
+person.sex; // 0
 person = defaults(person, null);
-person.sex // null
+person.sex; // null
 ```
 
 ### 3.2 set
@@ -243,27 +240,33 @@ person.sex // null
 `set` 方法可以拦截对属性的赋值操作，一般来说接收四个参数，分别是目标对象、属性名、属性值、Proxy 实例。 下面是一个 `set` 方法的用法，在对属性进行赋值的时候打印出当前状态。
 
 ```js
-const proxy = new Proxy({}, {
+const proxy = new Proxy(
+  {},
+  {
     set(target, key, value, receiver) {
-        console.log(`${key} has been set to ${value}`);
-        Reflect.set(target, key, value);
-    }
-})
-proxy.name = 'tom'; // name has been setted ygy
+      console.log(`${key} has been set to ${value}`);
+      Reflect.set(target, key, value);
+    },
+  }
+);
+proxy.name = "tom"; // name has been setted ygy
 ```
 
 第四个参数 `receiver` 则是指当前的 Proxy 实例，在下例中指代 `proxy`。
 
 ```js
-const proxy = new Proxy({}, {
+const proxy = new Proxy(
+  {},
+  {
     set(target, key, value, receiver) {
-        if (key === 'self') {
-            Reflect.set(target, key, receiver);
-        } else {
-            Reflect.set(target, key, value);
-        }
-    }
-})
+      if (key === "self") {
+        Reflect.set(target, key, receiver);
+      } else {
+        Reflect.set(target, key, value);
+      }
+    },
+  }
+);
 proxy.self === proxy; // true
 ```
 
@@ -272,25 +275,25 @@ proxy.self === proxy; // true
 ```js
 // 验证规则
 const validators = {
-    name: {
-        validate(value) {
-            return value.length > 6;
-        },
-        message: '用户名长度不能小于六'
+  name: {
+    validate(value) {
+      return value.length > 6;
     },
-    password: {
-        validate(value) {
-            return value.length > 10;
-        },
-        message: '密码长度不能小于十'
+    message: "用户名长度不能小于六",
+  },
+  password: {
+    validate(value) {
+      return value.length > 10;
     },
-    moblie: {
-        validate(value) {
-            return /^1(3|5|7|8|9)[0-9]{9}$/.test(value);
-        },
-        message: '手机号格式错误'
-    }
-}
+    message: "密码长度不能小于十",
+  },
+  moblie: {
+    validate(value) {
+      return /^1(3|5|7|8|9)[0-9]{9}$/.test(value);
+    },
+    message: "手机号格式错误",
+  },
+};
 ```
 
 然后编写验证方法，用 `set` 方法对 `form` 表单对象设置属性进行拦截，拦截的时候用上面的验证规则对属性值进行校验，如果校验失败，则弹窗提示。
@@ -298,41 +301,41 @@ const validators = {
 ```js
 // 验证方法
 function validator(obj, validators) {
-    return new Proxy(obj, {
-        set(target, key, value) {
-            const validator = validators[key]
-            if (!validator) {
-                target[key] = value;
-            } else if (validator.validate(value)) {
-                target[key] = value;
-            } else {
-                alert(validator.message || "");
-            }
-        }
-    })
+  return new Proxy(obj, {
+    set(target, key, value) {
+      const validator = validators[key];
+      if (!validator) {
+        target[key] = value;
+      } else if (validator.validate(value)) {
+        target[key] = value;
+      } else {
+        alert(validator.message || "");
+      }
+    },
+  });
 }
 let form = {};
 form = validator(form, validators);
-form.name = '666'; // 用户名长度不能小于六
-form.password = '113123123123123';
+form.name = "666"; // 用户名长度不能小于六
+form.password = "113123123123123";
 ```
 
 但是，如果这个属性已经设置为不可写，那么 `set` 将不会生效（但 `set` 方法依然会执行）。
 
 ```js
 const person = {
-    name: 'tom'
-}
-Object.defineProperty(person, 'name', {
-    writable: false
-})
-const proxy = new Proxy(person, {  
-    set(target, key, value) {
-        console.log(666)
-        target[key] = 'jerry'
-    }
-})
-proxy.name = '';
+  name: "tom",
+};
+Object.defineProperty(person, "name", {
+  writable: false,
+});
+const proxy = new Proxy(person, {
+  set(target, key, value) {
+    console.log(666);
+    target[key] = "jerry";
+  },
+});
+proxy.name = "";
 ```
 
 ### 3.3. apply
@@ -341,14 +344,14 @@ proxy.name = '';
 
 ```js
 function test() {
-    console.log('this is a test function');
+  console.log("this is a test function");
 }
 const func = new Proxy(test, {
-    apply(target, context, args) {
-        console.log('hello, world');
-        target.apply(context, args);
-    }
-})
+  apply(target, context, args) {
+    console.log("hello, world");
+    target.apply(context, args);
+  },
+});
 func();
 ```
 
@@ -357,13 +360,13 @@ func();
 ```js
 function log() {}
 const func = new Proxy(log, {
-    _count: 0,
-    apply(target, context, args) {
-        target.apply(context, args);
-        console.log(`this function has been called ${++this._count} times`);
-    }
-})
-func()
+  _count: 0,
+  apply(target, context, args) {
+    target.apply(context, args);
+    console.log(`this function has been called ${++this._count} times`);
+  },
+});
+func();
 ```
 
 ### 3.4. construct
@@ -372,16 +375,16 @@ func()
 
 ```js
 function Person(name, age) {
-    this.name = name;
-    this.age = age;
+  this.name = name;
+  this.age = age;
 }
 const P = new Proxy(Person, {
-    construct(target, args, newTarget) {
-        console.log('construct');
-        return new target(...args);
-    }
-})
-const p = new P('tom', 21); // 'construct'
+  construct(target, args, newTarget) {
+    console.log("construct");
+    return new target(...args);
+  },
+});
+const p = new P("tom", 21); // 'construct'
 ```
 
 我们知道，如果构造函数没有返回任何值或者返回了原始类型的值，那么默认返回的就是 `this`，如果返回的是一个引用类型的值，那么最终 `new` 出来的就是这个值。 因此，你可以代理一个空函数，然后返回一个新的对象。
@@ -389,14 +392,14 @@ const p = new P('tom', 21); // 'construct'
 ```js
 function noop() {}
 const Person = new Proxy(noop, {
-    construct(target, args, newTarget) {
-        return {
-            name: args[0],
-            age: args[1]
-        }
-    }
-})
-const person = new Person('tom', 21); // { name: 'tom', age: 21 }
+  construct(target, args, newTarget) {
+    return {
+      name: args[0],
+      age: args[1],
+    };
+  },
+});
+const person = new Person("tom", 21); // { name: 'tom', age: 21 }
 ```
 
 ## 4. Proxy 可以做的事情
@@ -418,38 +421,38 @@ class Person {
     this.age = age;
   }
   say() {
-    console.log(`my name is ${this.name}, and my age is ${this.age}`)
+    console.log(`my name is ${this.name}, and my age is ${this.age}`);
   }
 }
 const prototype = Person.prototype;
 // 获取 prototype 上所有的属性名
 Object.getOwnPropertyNames(prototype).forEach((name) => {
-    Person.prototype[name] = new Proxy(prototype[name], {
-        apply(target, context, args) {
-            console.time();
-            target.apply(context, args);
-            console.timeEnd();
-        }
-    })
- })
+  Person.prototype[name] = new Proxy(prototype[name], {
+    apply(target, context, args) {
+      console.time();
+      target.apply(context, args);
+      console.timeEnd();
+    },
+  });
+});
 ```
 
 拦截了原型函数后，开始考虑拦截对属性的访问。前面刚刚讲过 `construct` 方法的作用，那么是不是可以在 `new` 的时候对所有属性的访问设置拦截呢？ 没错，由于 `new` 出来的实例也是个对象，那么完全可以对这个对象进行拦截。
 
 ```js
 new Proxy(Person, {
-    // 拦截 construct 方法
-    construct(target, args) {
-        const obj = new target(...args);
-        // 返回一个代理过的对象
-        return new Proxy(obj, {
-            get(target, prop) {
-      		    console.log(`${target.name}.${prop} is being getting`);
-      		    return target[prop]
-    	    }
-        })
-    }
-})       
+  // 拦截 construct 方法
+  construct(target, args) {
+    const obj = new target(...args);
+    // 返回一个代理过的对象
+    return new Proxy(obj, {
+      get(target, prop) {
+        console.log(`${target.name}.${prop} is being getting`);
+        return target[prop];
+      },
+    });
+  },
+});
 ```
 
 所以，最后完整的代码如下：
@@ -461,36 +464,36 @@ class Person {
     this.age = age;
   }
   say() {
-    console.log(`my name is ${this.name}, and my age is ${this.age}`)
+    console.log(`my name is ${this.name}, and my age is ${this.age}`);
   }
 }
 const proxyTrack = (targetClass) => {
   const prototype = targetClass.prototype;
   Object.getOwnPropertyNames(prototype).forEach((name) => {
-        targetClass.prototype[name] = new Proxy(prototype[name], {
-            apply(target, context, args) {
-                console.time();
-                target.apply(context, args);
-                console.timeEnd();
-            }
-        })
-  })
-  
+    targetClass.prototype[name] = new Proxy(prototype[name], {
+      apply(target, context, args) {
+        console.time();
+        target.apply(context, args);
+        console.timeEnd();
+      },
+    });
+  });
+
   return new Proxy(targetClass, {
     construct(target, args) {
       const obj = new target(...args);
       return new Proxy(obj, {
         get(target, prop) {
-      		console.log(`${target.name}.${prop} is being getting`);
-      		return target[prop]
-    	}
-      })
-    }
-  })       
-}
+          console.log(`${target.name}.${prop} is being getting`);
+          return target[prop];
+        },
+      });
+    },
+  });
+};
 
 const MyClass = proxyTrack(Person);
-const myClass = new MyClass('tom', 21);
+const myClass = new MyClass("tom", 21);
 myClass.say();
 myClass.name;
 ```
@@ -501,42 +504,37 @@ myClass.name;
 
 ```js
 const country = {
-    name: 'china',
-    province: {
-        name: 'guangdong',
-        city: {
-            name: 'shenzhen'
-        }
-    }
-}
-const cityName = country.province
-    && country.province.city
-    && country.province.city.name;
+  name: "china",
+  province: {
+    name: "guangdong",
+    city: {
+      name: "shenzhen",
+    },
+  },
+};
+const cityName = country.province && country.province.city && country.province.city.name;
 ```
 
 但这样还是过于繁琐了，于是 Lodash 提供了 `get` 方法帮处理这个问题：
 
 ```js
-_.get(country, 'province.city.name');
+_.get(country, "province.city.name");
 ```
 
 虽然看起来似乎还不错，但总觉得哪里不太对（好是好，就是太丑了）。 最新的 ES 提案中提供了可选链的语法糖，支持我们用下面的语法来深层取值。
 
 ```js
-country?.province?.city?.name
+country?.province?.city?.name;
 ```
 
 但是这个特性只是处于 `stage3` 阶段，还没有被正式纳入 ES 规范中，更没有浏览器已经支持了这个特性。 所以，我们只能另辟蹊径。这时你可能会想到如果使用 Proxy 的 `get` 方法拦截对属性的访问，这样是不是就可以实现深层取值了呢？
 
-
-
 ![code.png-92.3kB](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/image/h3hynW.jpg)
-
 
 ```js
 const obj = {
-    person: {}
-}
+  person: {},
+};
 // 预期结果（这里为什么要当做函数执行呢？）
 get(obj)() === obj;
 get(obj).person(); // {}
@@ -547,12 +545,12 @@ get(obj).person.name.xxx.yyy.zzz(); // undefined
 首先，创建一个 `get` 方法，使用 Proxy 中的 `get` 对传入的对象进行拦截。
 
 ```js
-function get (obj) {
-    return new Proxy(obj, {
-        get(target, prop) {
-            return target[prop];
-        }
-    })
+function get(obj) {
+  return new Proxy(obj, {
+    get(target, prop) {
+      return target[prop];
+    },
+  });
 }
 ```
 
@@ -567,24 +565,24 @@ get(obj).person.name.xxx.yyy.zzz; // Cannot read property 'xxx' of undefined
 前两个测试用例是成功了，但第三个还是不行，因为 `get(obj).person.name` 是 `undefined`，所以接下来的重点是处理属性为 `undefined` 的情况。 对这个 `get` 方法进行一下简单的改造，这次不再直接返回 `target[prop]`，而是返回一个代理对象，让第三个例子不再报错。
 
 ```js
-function get (obj) {
-    return new Proxy(obj, {
-        get(target, prop) {
-            return get(target[prop]);
-        }
-    })
+function get(obj) {
+  return new Proxy(obj, {
+    get(target, prop) {
+      return get(target[prop]);
+    },
+  });
 }
 ```
 
 嗯，看起来有点儿高大上了，但是 `target[prop]` 为 `undefined` 的时候，传给 get 方法的就是 `undefined` 了，而 Proxy 第一个参数必须为对象，这样岂不是会报错？ 所以，需要对 `obj` 为 `undefined` 的时候进行特殊处理，为了能够深层取值，只能对值为 `undefined` 的属性设置默认值为空对象。
 
 ```js
-function get (obj = {}) {
-    return new Proxy(obj, {
-        get(target, prop) {
-            return get(target[prop]);
-        }
-    })
+function get(obj = {}) {
+  return new Proxy(obj, {
+    get(target, prop) {
+      return get(target[prop]);
+    },
+  });
 }
 get(obj).person; // {}
 get(obj).person.name; // {}
@@ -595,17 +593,17 @@ get(obj).person.name.xxx.yyy.zzz; // {}
 
 ```js
 function noop() {}
-function get (obj) {
-    // 注意这里拦截的是 noop 函数
-    return new Proxy(noop, {
-        // 这里支持返回执行的时候传入的参数
-        apply(target, context, [arg]) {
-            return obj;
-        },
-        get(target, prop) {
-            return get(obj[prop]);
-        }
-    })
+function get(obj) {
+  // 注意这里拦截的是 noop 函数
+  return new Proxy(noop, {
+    // 这里支持返回执行的时候传入的参数
+    apply(target, context, [arg]) {
+      return obj;
+    },
+    get(target, prop) {
+      return get(obj[prop]);
+    },
+  });
 }
 ```
 
@@ -621,34 +619,30 @@ get(obj).person.name.xxx.yyy.zzz(); // Cannot read property 'xxx' of undefined
 
 ```js
 get(undefined)() === undefined; // true
-get(undefined).xxx.yyy.zzz() // undefined
+get(undefined).xxx.yyy.zzz(); // undefined
 ```
 
 和前面的困扰不一样的地方是，这里完全不需要注意 `get(undefined).xxx` 是否为正确的值，因为想获取值必须要执行才能拿到。那么只需要对所有 `undefined` 后面访问的属性都默认为 `undefined` 就好了。
 
 ```js
 function noop() {}
-function get (obj) {
-    if (obj === undefined) {
-        return proxyVoid;
-    }
-    // 注意这里拦截的是 noop 函数
-    return new Proxy(noop, {
-        // 这里支持返回执行的时候传入的参数
-        apply(target, context, [arg]) {
-            return obj === undefined ? arg : obj;
-        },
-        get(target, prop) {
-            if (
-                obj !== undefined &&
-                obj !== null &&
-                obj.hasOwnProperty(prop)
-            ) {
-                return get(obj[prop]);
-            }
-            return proxyVoid;
-        }
-    })
+function get(obj) {
+  if (obj === undefined) {
+    return proxyVoid;
+  }
+  // 注意这里拦截的是 noop 函数
+  return new Proxy(noop, {
+    // 这里支持返回执行的时候传入的参数
+    apply(target, context, [arg]) {
+      return obj === undefined ? arg : obj;
+    },
+    get(target, prop) {
+      if (obj !== undefined && obj !== null && obj.hasOwnProperty(prop)) {
+        return get(obj[prop]);
+      }
+      return proxyVoid;
+    },
+  });
 }
 ```
 
@@ -665,29 +659,25 @@ let isFirst = true;
 function noop() {}
 let proxyVoid = get(undefined);
 function get(obj) {
-    if (obj === undefined && !isFirst) {
-        return proxyVoid;
-    }
-    if (obj === undefined && isFirst) {
-        isFirst = false;
-    }
-    // 注意这里拦截的是 noop 函数
-    return new Proxy(noop, {
-        // 这里支持返回执行的时候传入的参数
-        apply(target, context, [arg]) {
-            return obj === undefined ? arg : obj;
-        },
-        get(target, prop) {
-            if (
-                obj !== undefined &&
-                obj !== null &&
-                obj.hasOwnProperty(prop)
-            ) {
-                return get(obj[prop]);
-            }
-            return proxyVoid;
-        }
-    })
+  if (obj === undefined && !isFirst) {
+    return proxyVoid;
+  }
+  if (obj === undefined && isFirst) {
+    isFirst = false;
+  }
+  // 注意这里拦截的是 noop 函数
+  return new Proxy(noop, {
+    // 这里支持返回执行的时候传入的参数
+    apply(target, context, [arg]) {
+      return obj === undefined ? arg : obj;
+    },
+    get(target, prop) {
+      if (obj !== undefined && obj !== null && obj.hasOwnProperty(prop)) {
+        return get(obj[prop]);
+      }
+      return proxyVoid;
+    },
+  });
 }
 ```
 
@@ -702,35 +692,31 @@ get(obj).person.name.xxx.yyy.zzz(); // undefined
 bingo，这个方法完全实现了我们的需求。最后，完整的代码如下：
 
 ```js
-    let isFirst = true;
-    function noop() {}
-    let proxyVoid = get(undefined);
-    function get(obj) {
-        if (obj === undefined) {
-            if (!isFirst) {
-                return proxyVoid;
-            }
-            isFirst = false;
-        }
-        // 注意这里拦截的是 noop 函数
-        return new Proxy(noop, {
-            // 这里支持返回执行的时候传入的参数
-            apply(target, context, [arg]) {
-                return obj === undefined ? arg : obj;
-            },
-            get(target, prop) {
-                if (
-                    obj !== undefined &&
-                    obj !== null &&
-                    obj.hasOwnProperty(prop)
-                ) {
-                    return get(obj[prop]);
-                }
-                return proxyVoid;
-            }
-        })
+let isFirst = true;
+function noop() {}
+let proxyVoid = get(undefined);
+function get(obj) {
+  if (obj === undefined) {
+    if (!isFirst) {
+      return proxyVoid;
     }
-    this.get = get;
+    isFirst = false;
+  }
+  // 注意这里拦截的是 noop 函数
+  return new Proxy(noop, {
+    // 这里支持返回执行的时候传入的参数
+    apply(target, context, [arg]) {
+      return obj === undefined ? arg : obj;
+    },
+    get(target, prop) {
+      if (obj !== undefined && obj !== null && obj.hasOwnProperty(prop)) {
+        return get(obj[prop]);
+      }
+      return proxyVoid;
+    },
+  });
+}
+this.get = get;
 ```
 
 这个基于 Proxy 的 `get` 方法的灵感来自于 Github 上的一个名为 safe-touch 的库，感兴趣的可以去看一下它的源码实现：[safe-touch](https://github.com/EnixCoda/safe-touch)
@@ -745,22 +731,25 @@ bingo，这个方法完全实现了我们的需求。最后，完整的代码如
 
 ```js
 const pipe = (value) => {
-    const stack = [];
-    const proxy = new Proxy({}, {
-        get(target, prop) {
-            if (prop === 'execute') {
-                return stack.reduce(function (val, fn) {
-                    return fn(val);
-                }, value);
-            }
-            stack.push(window[prop]);
-            return proxy;
+  const stack = [];
+  const proxy = new Proxy(
+    {},
+    {
+      get(target, prop) {
+        if (prop === "execute") {
+          return stack.reduce(function (val, fn) {
+            return fn(val);
+          }, value);
         }
-    })
-    return proxy;
-}
-var double = n => n * 2;
-var pow = n => n * n;
+        stack.push(window[prop]);
+        return proxy;
+      },
+    }
+  );
+  return proxy;
+};
+var double = (n) => n * 2;
+var pow = (n) => n * n;
 pipe(3).double.pow.execute;
 ```
 

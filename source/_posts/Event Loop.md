@@ -1,20 +1,21 @@
 ---
 title: Event Loop
 author: Tide
-avatar: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/1055543572.jpeg
-authorLink: 'http://www.shmilyxy.cn'
+avatar: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/BokeImage/images/avatar.jpg
+authorLink: "http://www.shmilyxy.cn"
 authorAbout: 潮生
 authorDesc: 一个好奇的人
 categories: 技术
 date: 2020-04-03 22:16:01
 comments: true
-tags: 
- - web
- - 书单
+tags:
+  - web
+  - 书单
 keywords: EventLoop
 description: Event Loop事件循环
 photos: https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/vR4Roa.jpg
 ---
+
 # Event Loop
 
 ## 一、Event Loop 是什么
@@ -69,8 +70,6 @@ JavaScript 从诞生起就是单线程，原因大概是不想让浏览器变得
 
 ![fJ4Kdy](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/fJ4Kdy.jpg)
 
-
-
 当你打开一个 Tab 页面的时候，就创建了一个进程。如果从一个页面打开了另一个页面，打开的页面和当前的页面属于同一站点的话，那么这个页面会复用父页面的渲染进程。
 
 ### 浏览器主线程常驻线程
@@ -100,8 +99,6 @@ JavaScript 从诞生起就是单线程，原因大概是不想让浏览器变得
 看到这里，总算是进入正题了，先讲讲浏览器端的 Event Loop 是什么样的。
 
 ![JS运行机制图](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/iu91yJ.jpg)
-
-
 
 上图是一张 JS 的运行机制图，Js 运行时大致会分为几个部分：
 
@@ -153,7 +150,7 @@ JavaScript 的代码执行时，主线程会从上到下一步步的执行代码
 
 ### 事件运行顺序
 
-1. 执行同步任务，同步任务不需要做特殊处理，直接执行(下面的步骤中遇到同步任务都是一样处理) --- 第一轮从 script开始
+1. 执行同步任务，同步任务不需要做特殊处理，直接执行(下面的步骤中遇到同步任务都是一样处理) --- 第一轮从 script 开始
 2. 从宏任务队列中取出队头任务执行
 3. 如果产生了宏任务，将宏任务放入宏任务队列，下次轮循的时候执行
 4. 如果产生了微任务，将微任务放入微任务队列
@@ -171,11 +168,9 @@ JavaScript 的代码执行时，主线程会从上到下一步步的执行代码
 
 ![举个栗子](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/qkqr3I.jpg)
 
-
-
 放图的原因是为了让大家在看解析之前可以先自己按照运行顺序走一遍，写好答案之后再来看解析。
- 解析：
- (用绿色的表示同步任务和宏任务，红色表示微任务)
+解析：
+(用绿色的表示同步任务和宏任务，红色表示微任务)
 
 ```
 +  console.log('script start')
@@ -183,7 +178,7 @@ JavaScript 的代码执行时，主线程会从上到下一步步的执行代码
 +    console.log('setTimeout')
 +  }, 0)
 +  new Promise((resolve, reject)=>{
-+    console.log("promise1") 
++    console.log("promise1")
 +    resolve()
 +  })
 -  .then(()=>{
@@ -219,30 +214,30 @@ JavaScript 的代码执行时，主线程会从上到下一步步的执行代码
 12. 微任务队列执行完毕，别忘了宏任务队列中的 setTimeout，log 输出 `setTimeout`
 
 经过以上一番缜(xia)密(gao)分析，希望没有绕晕你，最后的输出结果就是：
- `script start -> promise1 -> script end -> then11 -> promise2 -> then2-1 -> then12 -> then2-2 -> setTimeout`
+`script start -> promise1 -> script end -> then11 -> promise2 -> then2-1 -> then12 -> then2-2 -> setTimeout`
 
 ### 宏任务？微任务？
 
 不知道大家看了宏任务和微任务之后会不会有一个疑惑，宏任务和微任务都是异步任务，微任务之前说过了是为了及时解决一些必要事件而产生的。
 
 - 为什么要有微任务？
-   为什么要有微任务的原因前面已经说了，这里就不再赘述，简单说一下就是为了及时处理一些任务，不然等到最后再执行的时候拿到的数据可能已经是被污染的数据达不到预期目标了。
+  为什么要有微任务的原因前面已经说了，这里就不再赘述，简单说一下就是为了及时处理一些任务，不然等到最后再执行的时候拿到的数据可能已经是被污染的数据达不到预期目标了。
 
 - 什么是宏任务？什么是微任务？
-   相信大家在学习 Event Loop 查找资料的时候，肯定各种资料里面都会讲到宏任务和微任务，但是不知道你有没有灵魂拷问过你自己：`什么是宏任务？什么是微任务？怎么区分宏任务和微任务？`不能只是默许接受这个概念，在这里，我根据我的个人理解进行一番说(hu)明(che)
+  相信大家在学习 Event Loop 查找资料的时候，肯定各种资料里面都会讲到宏任务和微任务，但是不知道你有没有灵魂拷问过你自己：`什么是宏任务？什么是微任务？怎么区分宏任务和微任务？`不能只是默许接受这个概念，在这里，我根据我的个人理解进行一番说(hu)明(che)
 
 - 宏任务和微任务的真面目
-   其实在 Chrome 的源码中并没有什么宏任务和微任务的代码或是说明，在 [JS 大会](https://www.bilibili.com/video/BV1bE411B7ez?t=478)上提到过微任务这个名词，但是也没有说到底什么是微任务。
+  其实在 Chrome 的源码中并没有什么宏任务和微任务的代码或是说明，在 [JS 大会](https://www.bilibili.com/video/BV1bE411B7ez?t=478)上提到过微任务这个名词，但是也没有说到底什么是微任务。
 
   宏任务
-   文章最开始的时候说过，在 chrome 里，每个页面都对应一个进程。而该进程又有多个线程，比如 JS 线程、渲染线程、IO 线程、网络线程、定时器线程等等，这些线程之间的通信是通过向对象的任务队列中添加一个任务（postTask）来实现的。**宏任务的本质可以认为是多线程事件循环或消息循环，也就是线程间通信的一个消息队列。**
+  文章最开始的时候说过，在 chrome 里，每个页面都对应一个进程。而该进程又有多个线程，比如 JS 线程、渲染线程、IO 线程、网络线程、定时器线程等等，这些线程之间的通信是通过向对象的任务队列中添加一个任务（postTask）来实现的。**宏任务的本质可以认为是多线程事件循环或消息循环，也就是线程间通信的一个消息队列。**
 
   就拿 setTimeout 举例来说，当遇到它的时候，浏览器就会对 Event Loop 说：嘿，我有一个任务交给你，Event Loop 就会说：好的，我会把它加到我的 todoList 中，之后我会执行它，它是需要调用 API 的。
 
   **宏任务的真面目是浏览器派发，与 JS 引擎无关的，参与了 Event Loop 调度的任务**
 
   微任务
-   微任务是在运行宏任务/同步任务的时候产生的，是属于当前任务的，所以它不需要浏览器的支持，内置在 JS 当中，不需要 API 支持，直接在 JS 的引擎中就被执行掉了。
+  微任务是在运行宏任务/同步任务的时候产生的，是属于当前任务的，所以它不需要浏览器的支持，内置在 JS 当中，不需要 API 支持，直接在 JS 的引擎中就被执行掉了。
 
 ### 特殊的点
 
@@ -285,7 +280,7 @@ JavaScript 的代码执行时，主线程会从上到下一步步的执行代码
 ```
 
 按照之前的分析方法去分析之后就会得出一个结果：
- `script start => async2 end => Promise => script end => promise1 => promise2 => async1 end => setTimeout`
+`script start => async2 end => Promise => script end => promise1 => promise2 => async1 end => setTimeout`
 
 可以看出 async1 函数获取执行权是作为微任务的队尾，但是，在 Chrome73(金丝雀) 版本之后，async 的执行优化了，它会在 promise1 和 promise2 的输出之前执行。笔者大概了解了一下应该是用 PromiseResolve 对 await 进行了优化，减少了 Promise 的再次创建，有兴趣的小伙伴可以看看 Chrome 的源码。
 
@@ -313,17 +308,17 @@ Node 中的宏任务和微任务在浏览器端的 JS 相比增加了一些，�
 Node 的事件循环分成了六个阶段，每个阶段对应一个宏任务队列，相当于是宏任务进行了一个分类。
 
 1. timers(计时器)
-    执行 setTimeout 以及 setInterval 的回调
+   执行 setTimeout 以及 setInterval 的回调
 2. I/O callbacks
-    处理网络、流、TCP 的错误回调
+   处理网络、流、TCP 的错误回调
 3. idel, prepare --- 闲置阶段
-    node 内部使用
+   node 内部使用
 4. poll(轮循)
-    执行 poll 中的 I/O 队列，检查定时器是否到时间
+   执行 poll 中的 I/O 队列，检查定时器是否到时间
 5. check(检查)
-    存放 setImmediate 回调
+   存放 setImmediate 回调
 6. close callbacks
-    关闭回调，例如 sockect.on('close')
+   关闭回调，例如 sockect.on('close')
 
 ### 轮循顺序
 
@@ -343,7 +338,7 @@ Node 的事件循环分成了六个阶段，每个阶段对应一个宏任务队
 2. 执行微任务队列，先执行所有 Next Tick 队列中的所有任务，再执行其他的微任务队列中的所有任务
 3. 开始执行宏任务，共六个阶段，从第一个阶段开始执行自己宏任务队列中的所有任务(浏览器是从宏任务队列中取第一个执行！！)
 4. 每个阶段的宏任务执行完毕之后，开始执行微任务
-5. TimersQueue -> 步骤2 -> I/O Queue -> 步骤2 -> Check Queue -> 步骤2 -> Close Callback Queue -> 步骤2 -> TimersQueue ...
+5. TimersQueue -> 步骤 2 -> I/O Queue -> 步骤 2 -> Check Queue -> 步骤 2 -> Close Callback Queue -> 步骤 2 -> TimersQueue ...
 
 这里要注意的是，nextTick 事件是一个单独的队列，它的优先级会高于微任务，所以在当前宏任务/同步任务执行完成之后，会先执行 nextTick 队列中的所有任务，再去执行微任务队列中的所有任务。
 
@@ -376,7 +371,7 @@ setImmediate(() => {
 
 ![img](https://cdn.jsdelivr.net/gh/ShmilyXI/Gallerys@master/NoteImage/8xiOdi.jpg)
 
-setImmediate 的输出跑到 setTimeout 前面去了，这时候就是：小朋友你是否有很多的问号❓
+setImmediate 的输出跑到 setTimeout 前面去了，这时候就是：小朋友你是否有很多的问号 ❓
 
 ### 分析
 
@@ -394,7 +389,7 @@ setTimeout 的回调函数在 timers 阶段执行，setImmediate 的回调函数
 最开始就说了，一个优秀的程序员要让自己的代码按照自己想要的顺序运行，下面我们就来控制一下 setTimeout 和 setImediate 的运行。
 
 - 让 setTimeout 先执行
-   上面代码运行顺序不同无非就是因为 Node 准备时间的不确定性，我们可以直接手动延长准备时间👇
+  上面代码运行顺序不同无非就是因为 Node 准备时间的不确定性，我们可以直接手动延长准备时间 👇
 
 ```
   const start = Date.now()
@@ -410,9 +405,9 @@ setTimeout 的回调函数在 timers 阶段执行，setImmediate 的回调函数
 ```
 
 - 让 setImmediate 先执行
-   setImmediate 是在 check 阶段执行，相对于 setTimeout 来说是在 timers 阶段之后，只需要想办法把程序的运行环境控制在 timers 阶段之后就可以了。
+  setImmediate 是在 check 阶段执行，相对于 setTimeout 来说是在 timers 阶段之后，只需要想办法把程序的运行环境控制在 timers 阶段之后就可以了。
 
-  让程序至少从 I/O callbacks 阶段开始 --- 可以套一层文件读写把把程序控制在 I/O callbacks 阶段的运行环境中👇
+  让程序至少从 I/O callbacks 阶段开始 --- 可以套一层文件读写把把程序控制在 I/O callbacks 阶段的运行环境中 👇
 
 ```
 const fs = require('fs')
@@ -421,7 +416,7 @@ fs.readFile(__dirname, () => {
   setTimeout(() => {
     console.log('setTimeout')
   }, 0)
-  
+
   setImmediate(() => {
     console.log('setImmediate')
   })
@@ -443,20 +438,20 @@ setTimeout(() => {
 ```
 
 1. node 10 及之前的版本：
-    要考虑上一个定时器执行完成时，下一个定时器是否到时间加入了任务队列中，如果未到时间，先执行其他的代码。
-    比如：
-    timer1 执行完之后 timer2 到了任务队列中，顺序为 `timer1 -> timer2 -> promise resolve`
-    timer2 执行完之后 timer2 还没到任务队列中，顺序为 `timer1 -> promise resolve -> timer2`
+   要考虑上一个定时器执行完成时，下一个定时器是否到时间加入了任务队列中，如果未到时间，先执行其他的代码。
+   比如：
+   timer1 执行完之后 timer2 到了任务队列中，顺序为 `timer1 -> timer2 -> promise resolve`
+   timer2 执行完之后 timer2 还没到任务队列中，顺序为 `timer1 -> promise resolve -> timer2`
 2. node 11 及其之后的版本：
-    `timeout1 -> timeout2 -> promise resolve`
-    一旦执行某个阶段里的一个宏任务之后就立刻执行微任务队列，这和浏览器端运行是一致的。
+   `timeout1 -> timeout2 -> promise resolve`
+   一旦执行某个阶段里的一个宏任务之后就立刻执行微任务队列，这和浏览器端运行是一致的。
 
 ## 小结
 
 Node 和浏览器端有什么不同
 
 1. 浏览器端的 Event Loop 和 Node.js 中的 Event Loop 是不同的，实现机制也不一样
-2. Node.js 可以理解成有4个宏任务队列和2个微任务队列，但是执行宏任务时有6个阶段
-3. Node.js 中限制性全局 script 代码，执行完同步代码后，先从微任务队列 Next Tick Queue 中取出所有任务放入调用栈执行，再从其他微任务队列中取出所有任务放入调用栈中执行，然后开始宏任务的6个阶段，每个阶段都将其宏任务队列中的所有任务都取出来执行(浏览器是只取第一个执行)，每个宏任务阶段执行完毕之后开始执行微任务，再开始执行下一阶段宏任务，以此构成事件循环
+2. Node.js 可以理解成有 4 个宏任务队列和 2 个微任务队列，但是执行宏任务时有 6 个阶段
+3. Node.js 中限制性全局 script 代码，执行完同步代码后，先从微任务队列 Next Tick Queue 中取出所有任务放入调用栈执行，再从其他微任务队列中取出所有任务放入调用栈中执行，然后开始宏任务的 6 个阶段，每个阶段都将其宏任务队列中的所有任务都取出来执行(浏览器是只取第一个执行)，每个宏任务阶段执行完毕之后开始执行微任务，再开始执行下一阶段宏任务，以此构成事件循环
 4. 宏任务包括 ....
 5. 微任务包括 ....
