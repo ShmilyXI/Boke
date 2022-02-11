@@ -85,13 +85,13 @@ deploy:
   #   # coding: https://git.coding.net/hojun/hojun.git
   #   branch: hexo
   type: rsync
-  host: 47.107.83.220
-  user: root
-  root: /data/www
+  host: 175.178.107.201
+  user: xiao
+  root: /data/www/website
   port: 22
   delete: true
   verbose: true
-  ignore_errors: false
+  ignore_errors: true
 
 # backup
 backup:
