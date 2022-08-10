@@ -87,7 +87,7 @@ deploy:
   type: rsync
   host: 175.178.107.201
   user: xiao
-  root: /data/www/website
+  root: /www/wwwroot/521xiao.cn
   port: 22
   delete: true
   verbose: true
